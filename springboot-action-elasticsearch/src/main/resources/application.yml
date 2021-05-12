@@ -1,0 +1,12 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
+      repositories:
+        # 默认为true， 会代理dao层继承ElasticsearchRepository的接口
+        enabled: true
+
+logging:
+  level:
+    root: DEBUG
