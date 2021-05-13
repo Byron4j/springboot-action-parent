@@ -18,6 +18,7 @@
 		<module>springboot-action-hello</module>
 		<module>springboot-action-jetty</module>
 		<module>springboot-action-elasticsearch</module>
+		<module>springboot-action-swagger</module>
 	</modules>
 
 	<properties>
