@@ -44,7 +44,7 @@ public class SwaggerConfig {
     private List<RequestParameter> globalRequestParameters() {
         List<RequestParameter> parameterList = new ArrayList<>();
         RequestParameter region = new RequestParameterBuilder()
-                .name("region").in(ParameterType.HEADER).description("区域").required(true).build();
+                .name("region").in(ParameterType.HEADER).description("区域").required(false).build();
 
         parameterList.add(region);
         return parameterList;
