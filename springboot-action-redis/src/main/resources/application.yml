@@ -1,0 +1,13 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 7
+        max-idle: 7
+        min-idle: 2
+        # 负值表示获取连接时一直等待
+        max-wait: -1ms
+server:
+  port: 9999

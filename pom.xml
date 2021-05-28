@@ -19,6 +19,8 @@
 		<module>springboot-action-jetty</module>
 		<module>springboot-action-elasticsearch</module>
 		<module>springboot-action-swagger</module>
+		<module>springboot-action-redis</module>
+		<module>springboot-action-resttemplate</module>
 	</modules>
 
 	<properties>
