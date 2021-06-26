@@ -4,6 +4,7 @@ import com.example.demo.hello.bean.Person;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -16,6 +17,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisConfig {
+
+    @Autowired
+    CustomerRedisSerializer customerRedisSerializer;
+
     @Bean
     public RedisConnectionFactory redisConnectionFactory(){
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
@@ -34,7 +39,7 @@ public class RedisConfig {
         jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
         template.setKeySerializer(stringRedisSerializer);
         template.setValueSerializer(jackson2JsonRedisSerializer);
-        template.setHashKeySerializer(stringRedisSerializer);
+        template.setHashKeySerializer(customerRedisSerializer); // hash key 使用 Integer，注释掉
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         return template;
     }
@@ -47,7 +52,7 @@ public class RedisConfig {
         RedisSerializer<?> stringSerializer = new StringRedisSerializer();
         redisTemplate.setKeySerializer(stringSerializer);
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
+        redisTemplate.setHashKeySerializer(customerRedisSerializer);  // hash key 使用 Integer，注释掉
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
